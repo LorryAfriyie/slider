@@ -1,0 +1,34 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.image-slider-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image-slider-btn {
+  all: unset;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 100ms ease-in-out;
+
+  & > * {
+    stroke: white;
+    fill: black;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &:hover {
+    background-color: rgba(186, 179, 179, 0.2);
+  }
+}

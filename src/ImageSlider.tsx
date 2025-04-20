@@ -25,11 +25,24 @@ export function ImageSlider({ imageUrl }: ImageSliderProps) {
 
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
-      <img
-        src={imageUrl[imageIndex]}
-        alt={imageUrl[imageIndex]}
-        className={"image-slider-img"}
-      />
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          overflow: "hidden",
+        }}
+      >
+        {imageUrl.map((url, index) => (
+          <img
+            key={index}
+            src={url}
+            alt={url}
+            className={"image-slider-img"}
+            style={{ translate: `${-100 * imageIndex}%` }}
+          />
+        ))}
+      </div>
       <button
         onClick={showPrevImage}
         className={"image-slider-btn"}
@@ -37,7 +50,6 @@ export function ImageSlider({ imageUrl }: ImageSliderProps) {
       >
         <ArrowBigLeft />
       </button>
-
       <button
         onClick={showNextImage}
         className={"image-slider-btn"}
@@ -45,6 +57,12 @@ export function ImageSlider({ imageUrl }: ImageSliderProps) {
       >
         <ArrowBigRight />
       </button>
+
+      <div>
+        {imageUrl.map((_, index) => (
+          <button onClick={() => setImageIndex(index)}>{index}</button>
+        ))}
+      </div>
     </div>
   );
 }
